@@ -1,0 +1,53 @@
+import 'package:http/http.dart' as http;
+import 'package:printit_app/Api/request_manager.dart';
+import 'dart:convert';
+
+class WSSaveCompleteOrderWithExistingAddressRequest extends APIRequest {
+  String printryId;
+  String vendorCharge;
+  String pickupDelivery;
+  String orderId;
+  String userId;
+  String addressId;
+
+  WSSaveCompleteOrderWithExistingAddressRequest({
+    endPoint,
+    this.printryId,
+    this.vendorCharge,
+    this.pickupDelivery,
+    this.orderId,
+    this.userId,
+    this.addressId,
+  }) : super(endPoint + "complete_order") {}
+
+  @override
+  Map<String, Object> getParams() {
+    Map<String, Object> params = Map<String, Object>();
+    params["printry_id"] = this.printryId;
+    params["vendor_charge"] = this.vendorCharge;
+    params["pickup_delivery"] = this.pickupDelivery;
+    params["order_id"] = this.orderId;
+    params["address_id"] = this.addressId;
+    params["user_id"] = this.userId;
+    return params;
+  }
+
+  @override
+  String parseResponse(http.Response response, bool showLog) {
+    super.parseResponse(response, showLog);
+
+    String retVal = "Problem occured in parsing the response";
+    if (response.statusCode == 200) {
+      try {
+        Map<String, Object> responseData = jsonDecode(response.body);
+        if (responseData.containsKey("success")) {
+          this.response.addEntries(responseData.entries);
+          retVal = "";
+        }
+      } catch (e) {
+        retVal = e.toString();
+      }
+    }
+    return retVal;
+  }
+}
