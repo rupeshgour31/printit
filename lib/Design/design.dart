@@ -14,8 +14,8 @@ class Design extends StatefulWidget {
 class _DesignState extends State<Design> {
   @override
   Widget build(BuildContext context) {
-    final Map designDetail = ModalRoute.of(context).settings.arguments;
-    var printType = designDetail["currentPrintType"];
+    final  designDetail = ModalRoute.of(context)!.settings.arguments;
+    var printType = 'Quick Print';//designDetail["currentPrintType"];
     print("Bhumit $printType");
     var shouldShowCamera = false;
     var isGalleryPicker = true;

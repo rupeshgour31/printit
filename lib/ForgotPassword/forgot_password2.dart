@@ -45,7 +45,7 @@ class _ForgotPassword2State extends State<ForgotPassword2> {
               child: SafeArea(
                 child: Form(
                   key: formKey,
-                  autovalidate: model.autoValidate,
+                  // autovalidate: model.autoValidate,
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(

@@ -6,7 +6,7 @@ import 'package:printit_app/Api/request_manager.dart';
 class WSGetNotesViewRequest extends APIRequest {
   String notesID;
 
-  WSGetNotesViewRequest({endPoint, this.notesID})
+  WSGetNotesViewRequest({endPoint, this.notesID = ''})
       : super(endPoint + "note_detail") {}
 
   @override

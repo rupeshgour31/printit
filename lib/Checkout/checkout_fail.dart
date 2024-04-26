@@ -37,7 +37,7 @@ class _CheckoutFailState extends State<CheckoutFail> {
       setState(
             () {
           // user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          get_print_type = json.decode(prefs.getString('set_print_type')??'');
         },
       );
     }
@@ -46,13 +46,13 @@ class _CheckoutFailState extends State<CheckoutFail> {
 
   @override
   Widget build(BuildContext context) {
-    final Map product = ModalRoute
-        .of(context)
+    final  product = ModalRoute
+        .of(context)!
         .settings
         .arguments;
-    setState(() {
-      orderId = product['orderDetails']['order_id'].toString();
-    });
+    // setState(() {
+      // orderId = product['orderDetails']['order_id'].toString();
+    // });
     return WillPopScope(
       onWillPop: () async => false,
       child: Consumer<CheckoutModel>(
@@ -142,7 +142,7 @@ class _CheckoutFailState extends State<CheckoutFail> {
                             children: [
                               heightSizedBox(20.0),
 
-                              FailedView(product['orderDetails']),
+                              // FailedView(product['orderDetails']),
                               heightSizedBox(20.0),
                             ],
                           ),
@@ -150,7 +150,7 @@ class _CheckoutFailState extends State<CheckoutFail> {
                       ),
                     ),
                   ),
-                  progressHUD,
+                  // progressHUD,
                 ],
               ),
             ),

@@ -28,7 +28,7 @@ class SignUpModel extends ChangeNotifier {
   }
 
   signUpUser(context) async {
-    progressHUD.state.show();
+    // progressHUD.state.show();
     print("latitude $latitude");
     print("latitude $longitude");
 
@@ -55,7 +55,7 @@ class SignUpModel extends ChangeNotifier {
         //   ),
         // );
         // prefs?.setBool("isLoggedIn", true);
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
@@ -74,7 +74,7 @@ class SignUpModel extends ChangeNotifier {
         notifyListeners();
       } else {
         var messages = dataResponse['msg'];
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -92,7 +92,7 @@ class SignUpModel extends ChangeNotifier {
                       padding: EdgeInsets.only(right: 50.0),
                       height: 50,
                       child: Text(
-                        messages,
+                        'messages',
                         // textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         style: new TextStyle(
@@ -106,12 +106,12 @@ class SignUpModel extends ChangeNotifier {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },

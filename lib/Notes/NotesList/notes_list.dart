@@ -74,16 +74,16 @@ class _NotesListState extends State<NotesList> {
     await APIManagerForm.performRequest(otpRequest, showLog: true);
 
     try {
-      var dataResponse = otpRequest.response;
+      Map dataResponse = otpRequest.response;
       print(dataResponse);
       setState(
         () {
           notesData = dataResponse['notes'];
           notesCategory = dataResponse['notes_cat'];
           for (Map data in dataResponse['notes']) {
-            _notesDetails.add(
-              NotesDetails.fromJson(data),
-            );
+            // _notesDetails.add(
+            //   NotesDetails.fromJson(data),
+            // );
           }
         },
       );
@@ -95,7 +95,7 @@ class _NotesListState extends State<NotesList> {
   TextEditingController searchController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
-    List<Tab> tabs = List();
+    List<Tab> tabs = [];
       tabs.add( Tab(
         child: Container(
           padding: EdgeInsets.only(
@@ -226,11 +226,11 @@ class _NotesListState extends State<NotesList> {
                     ),
                   ),
                 ),
-                bottom: notesCategory.length == 0
+    /*bottom: notesCategory.length == 0
                     ? MyLinearProgressIndicator(
                         backgroundColor: Colors.orange,
-                      )
-                    : TabBar(
+                      )*/
+                    /*: TabBar(
                         isScrollable: true,
                         unselectedLabelColor: Color(0xff549584),
                         indicatorSize: TabBarIndicatorSize.label,
@@ -240,7 +240,7 @@ class _NotesListState extends State<NotesList> {
                           color: Color(0xff1C719C),
                         ),
                         tabs: tabs,
-                      ),
+                      ),*/
               ),
             ],
           ),
@@ -317,10 +317,10 @@ class NotesDetails {
   final String description;
 
   NotesDetails({
-    this.id,
-    this.name,
-    this.image,
-    this.description,
+    required  this.id,
+    required  this.name,
+    required this.image,
+    required this.description,
   });
 
   factory NotesDetails.fromJson(Map<String, dynamic> json) {
@@ -335,22 +335,22 @@ class NotesDetails {
 
 const double _kMyLinearProgressIndicatorHeight = 6.0;
 
-class MyLinearProgressIndicator extends LinearProgressIndicator
-    implements PreferredSizeWidget {
-  MyLinearProgressIndicator({
-    Key key,
-    double value,
-    Color backgroundColor,
-    Animation<Color> valueColor,
-  }) : super(
-          key: key,
-          value: value,
-          backgroundColor: backgroundColor,
-          valueColor: valueColor,
-        ) {
-    preferredSize = Size(double.infinity, _kMyLinearProgressIndicatorHeight);
-  }
-
-  @override
-  Size preferredSize;
-}
+// class MyLinearProgressIndicator extends LinearProgressIndicator
+//     implements PreferredSizeWidget {
+//   MyLinearProgressIndicator({
+//     Key? key,
+//     double? value,
+//     Color? backgroundColor,
+//     Animation<Color>? valueColor,
+//   }) : super(
+//           key: key,
+//           value: value,
+//           backgroundColor: backgroundColor,
+//           valueColor: valueColor,
+//         ) {
+//     preferredSize = Size(double.infinity, _kMyLinearProgressIndicatorHeight);
+//   }
+//
+//   @override
+//   Size preferredSize;
+// }

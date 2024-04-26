@@ -13,12 +13,12 @@ class WSUpdateOrdersRequest extends APIRequest {
 
   WSUpdateOrdersRequest({
     endPoint,
-    this.orderId,
-    this.printryId,
-    this.vendorCharge,
-    this.pickupDelivery,
-    this.couponCode,
-    this.addId,
+    this.orderId='',
+    this.printryId='',
+    this.vendorCharge='',
+    this.pickupDelivery='',
+    this.couponCode='',
+    this.addId='',
   }) : super(endPoint + "update_order") {}
 
   @override

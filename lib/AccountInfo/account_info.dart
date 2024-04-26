@@ -35,8 +35,8 @@ class _AccountInfoState extends State<AccountInfo> {
     if (status) {
       setState(
         () {
-          user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          // user_id = json.decode(prefs.getString('login_user_id'));
+          // get_print_type = json.decode(prefs.getString('set_print_type'));
         },
       );
     }
@@ -44,7 +44,7 @@ class _AccountInfoState extends State<AccountInfo> {
 
   @override
   getAccountInfo() async {
-    progressHUD.state.show();
+    // progressHUD.state.show();
     var otpRequest = WSGetAccountInfoRequest(
       endPoint: APIManagerForm.endpoint,
       userId: user_id.toString(),
@@ -58,9 +58,9 @@ class _AccountInfoState extends State<AccountInfo> {
         setState(() {
           accountInfo = dataResponse['data'];
         });
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
       } else {
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
       }
     } catch (e) {
       print('Error: ${e.toString()}');
@@ -128,7 +128,7 @@ class _AccountInfoState extends State<AccountInfo> {
                     ),
                   ),
                 ),
-                progressHUD,
+                // progressHUD,
               ],
             ),
             bottomNavigationBar:

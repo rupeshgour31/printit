@@ -12,12 +12,12 @@ class WSSaveTranslationOrderRequest extends APIRequest {
 
   WSSaveTranslationOrderRequest({
     endPoint,
-    this.user_id,
-    this.project_name,
-    this.trans_type,
-    this.lang_from,
-    this.lang_to,
-    this.trans_doc,
+    this.user_id='',
+    this.project_name='',
+    this.trans_type='',
+    this.lang_from='',
+    this.lang_to='',
+    this.trans_doc='',
   }) : super(endPoint + "save_translation_order") {}
 
   @override

@@ -33,8 +33,8 @@ class _SavedAddressesState extends State<SavedAddresses> {
     if (status) {
       setState(
         () {
-          user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          user_id = json.decode(prefs.getString('login_user_id')!);
+          get_print_type = json.decode(prefs.getString('set_print_type')!);
         },
       );
     }
@@ -42,7 +42,7 @@ class _SavedAddressesState extends State<SavedAddresses> {
 
   @override
   getMyAddressList() async {
-    progressHUD.state.show();
+    // progressHUD.state.show();
     var otpRequest = WSMyAddressListRequest(
       endPoint: APIManager.endpoint,
       userID: user_id.toString(),
@@ -53,11 +53,11 @@ class _SavedAddressesState extends State<SavedAddresses> {
       var dataResponse = otpRequest.response;
       if (dataResponse['success'] == true) {
         setState(() {
-          myAddresses = dataResponse['data'];
+          // myAddresses = dataResponse['data'];
         });
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
       } else {
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         // var messages = dataResponse['msg'];
         // showDialog(
         //   context: context,
@@ -136,7 +136,7 @@ class _SavedAddressesState extends State<SavedAddresses> {
               ),
             ),
           ),
-          progressHUD,
+          // progressHUD,
         ],
       ),
       bottomNavigationBar: submitBtn(context),

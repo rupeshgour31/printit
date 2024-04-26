@@ -15,15 +15,15 @@ class WSSaveQuickPrintOrderRequest extends APIRequest {
 
   WSSaveQuickPrintOrderRequest({
     endPoint,
-    this.user_id,
-    this.project_name,
-    this.paper_type,
-    this.paper_size,
-    this.copy_number,
-    this.order_type,
-    this.color,
-    this.binding,
-    this.image,
+    this.user_id='',
+    this.project_name='',
+    this.paper_type='',
+    this.paper_size='',
+    this.copy_number='',
+    this.order_type='',
+    this.color='',
+    this.binding='',
+    this.image='',
   }) : super(endPoint + "save_quick_print_order") {}
 
   @override

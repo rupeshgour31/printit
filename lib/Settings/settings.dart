@@ -10,7 +10,7 @@ import 'package:printit_app/Settings/SavedAddress/savedAddresses.dart';
 import 'package:printit_app/Settings/settings_widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
+// import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'dart:core';
 
 class Settings extends StatefulWidget {
@@ -21,7 +21,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   String _platformVersion = 'Unknown';
 
-  Future<void> _launched;
+  Future<void>? _launched;
   String _phone = '';
   var user_id;
   var get_print_type;
@@ -35,13 +35,13 @@ class _SettingsState extends State<Settings> {
   getValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     loginStatus = prefs.getBool('isLoggedIn') ?? false;
-    var getLang = json.decode(prefs.getString('language_select'));
+    var getLang = json.decode(prefs.getString('language_select')!);
     languageType = getLang == null ? 'english' : getLang;
     if (loginStatus) {
       setState(
         () {
-          user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          user_id = json.decode(prefs.getString('login_user_id')!);
+          get_print_type = json.decode(prefs.getString('set_print_type')!);
         },
       );
     }
@@ -66,13 +66,13 @@ class _SettingsState extends State<Settings> {
   Future<void> initPlatformState() async {
     String platformVersion;
     try {
-      platformVersion = await FlutterOpenWhatsapp.platformVersion;
+      // platformVersion = await FlutterOpenWhatsapp.platformVersion;
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
     if (!mounted) return;
     setState(() {
-      _platformVersion = platformVersion;
+      // _platformVersion = platformVersion;
     });
   }
 
@@ -259,7 +259,7 @@ class _SettingsState extends State<Settings> {
     );
   }
 
-  Widget contactUsPopup(context) {
+   contactUsPopup(context) {
     showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
@@ -303,8 +303,6 @@ class _SettingsState extends State<Settings> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        FlutterOpenWhatsapp.sendSingleMessage(
-                            "7697005469", "Hello");
                       },
                       child: Text(
                         'WhatsApp',

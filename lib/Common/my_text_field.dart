@@ -4,7 +4,7 @@ import 'package:printit_app/Common/common_function.dart';
 import 'package:printit_app/Common/common_widgets.dart';
 
 class AllInputDesign extends StatefulWidget {
-  final ValueChanged<String> onChanged;
+  final ValueChanged<String>? onChanged;
   final controller;
   final prefixText;
   final fillColor;
@@ -18,8 +18,8 @@ class AllInputDesign extends StatefulWidget {
   final errorText;
   final keyBoardType;
   final validatorFieldValue;
-  final List<TextInputFormatter> inputFormatterData;
-  final FormFieldSetter<String> onSaved;
+  final List<TextInputFormatter>? inputFormatterData;
+  final FormFieldSetter<String>? onSaved;
   final obsecureText;
   final suffixIcon;
   final maxLength;
@@ -35,7 +35,7 @@ class AllInputDesign extends StatefulWidget {
   final textStyleColors;
 
   const AllInputDesign({
-    Key key,
+    Key? key,
     this.textStyleColors,
     this.controller,
     this.initialValue,
@@ -94,7 +94,6 @@ class _AllInputDesignState extends State<AllInputDesign> {
             fontWeight: FontWeight.w400,
           ),
           keyboardType: widget.keyBoardType,
-          validator: widget.validator,
           controller: widget.controller,
           maxLength: widget.maxLength,
           enabled: widget.enabled,

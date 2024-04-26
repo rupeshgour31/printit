@@ -11,11 +11,11 @@ class WSUpdateProfileRequest extends APIRequest {
 
   WSUpdateProfileRequest({
     endPoint,
-    this.userId,
-    this.fName,
-    this.lName,
-    this.gender,
-    this.mobile,
+    this.userId='',
+    this.fName='',
+    this.lName='',
+    this.gender='',
+    this.mobile='',
   }) : super(endPoint + "update_profile") {}
 
   @override

@@ -43,7 +43,7 @@ class LoginModel extends ChangeNotifier {
       deviceToken = androidInfo.id;
     }
 
-    progressHUD.state.show();
+    // progressHUD.state.show();
     var otpRequest = WSLoginRequest(
       endPoint: APIManagerForm.endpoint,
       email: loginEmail.text,
@@ -62,7 +62,7 @@ class LoginModel extends ChangeNotifier {
           ),
         );
         prefs?.setBool("isLoggedIn", true);
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         if (comeFrom == 'newUser') {
           Navigator.pushAndRemoveUntil(
             context,
@@ -84,7 +84,7 @@ class LoginModel extends ChangeNotifier {
         // );
       } else {
         var messages = dataResponse['msg'];
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -98,7 +98,7 @@ class LoginModel extends ChangeNotifier {
                   ),
                   widthSizedBox(5.0),
                   Text(
-                    messages,
+                    'messages',
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     // overflow: TextOverflow.ellipsis,
@@ -106,12 +106,12 @@ class LoginModel extends ChangeNotifier {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
+                /*FlatButton(
                   child: new Text("OK"),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                ),
+                ),*/
               ],
             );
           },

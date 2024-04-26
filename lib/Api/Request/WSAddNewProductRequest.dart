@@ -4,9 +4,9 @@ import 'package:http/http.dart' as http;
 import 'package:printit_app/Api/request_manager.dart';
 
 class WSAddNewProductRequest extends APIRequest {
-  String orderId;
-  String productId;
-  String quantity;
+  String? orderId;
+  String? productId;
+  String? quantity;
 
   WSAddNewProductRequest({
     endPoint,
@@ -18,9 +18,9 @@ class WSAddNewProductRequest extends APIRequest {
   @override
   Map<String, Object> getParams() {
     Map<String, Object> params = Map<String, Object>();
-    params["order_id"] = this.orderId;
-    params["prod_id"] = this.productId;
-    params["qty"] = this.quantity;
+    params["order_id"] = this.orderId!;
+    params["prod_id"] = this.productId!;
+    params["qty"] = this.quantity!;
     return params;
   }
 

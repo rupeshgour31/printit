@@ -8,9 +8,9 @@ class WSTranslationCompleteOrderRequest extends APIRequest {
   String addressId;
   WSTranslationCompleteOrderRequest({
     endPoint,
-    this.orderId,
-    this.userId,
-    this.addressId,
+    this.orderId='',
+    this.userId='',
+    this.addressId='',
   }) : super(endPoint + "complete_trans_order") {}
 
   @override

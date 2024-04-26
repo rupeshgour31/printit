@@ -46,13 +46,13 @@ class _CheckoutTwoState extends State<CheckoutTwo> {
   getValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var status = prefs.getBool('isLoggedIn') ?? false;
-    var getLang = json.decode(prefs.getString('language_select'));
+    var getLang = json.decode(prefs.getString('language_select')??'');
     languageType = getLang ?? 'english';
     if (status) {
       setState(
         () {
-          user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          user_id = json.decode(prefs.getString('login_user_id')??'');
+          get_print_type = json.decode(prefs.getString('set_print_type')??'');
         },
       );
     } else {
@@ -134,7 +134,7 @@ class _CheckoutTwoState extends State<CheckoutTwo> {
                     ),
                     widthSizedBox(5.0),
                     Text(
-                      messages,
+                      'messages',
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       // overflow: TextOverflow.ellipsis,
@@ -142,12 +142,12 @@ class _CheckoutTwoState extends State<CheckoutTwo> {
                   ],
                 ),
                 actions: <Widget>[
-                  FlatButton(
-                    child: new Text("OK"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  // FlatButton(
+                  //   child: new Text("OK"),
+                  //   onPressed: () {
+                  //     Navigator.of(context).pop();
+                  //   },
+                  // ),
                 ],
               );
             },
@@ -250,7 +250,7 @@ class _CheckoutTwoState extends State<CheckoutTwo> {
                     ),
                     widthSizedBox(5.0),
                     Text(
-                      messages,
+                      'messages',
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       // overflow: TextOverflow.ellipsis,
@@ -258,12 +258,12 @@ class _CheckoutTwoState extends State<CheckoutTwo> {
                   ],
                 ),
                 actions: <Widget>[
-                  FlatButton(
-                    child: new Text("OK"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  // FlatButton(
+                  //   child: new Text("OK"),
+                  //   onPressed: () {
+                  //     Navigator.of(context).pop();
+                  //   },
+                  // ),
                 ],
               );
             },
@@ -329,7 +329,7 @@ class _CheckoutTwoState extends State<CheckoutTwo> {
                     ),
                     widthSizedBox(5.0),
                     Text(
-                      messages,
+                      'messages',
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       // overflow: TextOverflow.ellipsis,
@@ -337,12 +337,12 @@ class _CheckoutTwoState extends State<CheckoutTwo> {
                   ],
                 ),
                 actions: <Widget>[
-                  FlatButton(
-                    child: new Text("OK"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  // FlatButton(
+                  //   child: new Text("OK"),
+                  //   onPressed: () {
+                  //     Navigator.of(context).pop();
+                  //   },
+                  // ),
                 ],
               );
             },
@@ -356,10 +356,10 @@ class _CheckoutTwoState extends State<CheckoutTwo> {
 
   @override
   Widget build(BuildContext context) {
-    final Map product = ModalRoute.of(context).settings.arguments;
+    final  product = ModalRoute.of(context)!.settings.arguments;
     print('order pick up 2 ${product}');
     setState(() {
-      orderId = product['order_id'].toString();
+      // orderId = product['order_id'].toString();
     });
     return Consumer<CheckoutModel>(
       builder: (context, model, _) {

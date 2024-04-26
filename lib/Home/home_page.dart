@@ -33,12 +33,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map product = ModalRoute.of(context).settings.arguments;
+    final  product = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       body: Stack(
         children: [
-          DrawerMenu(product['loginStatus']?? true),
-          Dashboard(getPrintType: product['print_type']),
+          DrawerMenu(/*product['loginStatus']??*/ true),
+          Dashboard(getPrintType:'express_print'),//getPrintType: product['print_type']),
         ],
       ),
     );

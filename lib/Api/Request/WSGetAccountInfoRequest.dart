@@ -8,7 +8,7 @@ class WSGetAccountInfoRequest extends APIRequest {
 
   WSGetAccountInfoRequest({
     endPoint,
-    this.userId,
+    this.userId = '',
   }) : super(endPoint + "account_info") {}
 
   @override

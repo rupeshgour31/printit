@@ -9,8 +9,8 @@ class WSGetPrintOptionsRequest extends APIRequest {
 
   WSGetPrintOptionsRequest({
     endPoint,
-    this.order_type,
-    this.print_type,
+    this.order_type='',
+    this.print_type='',
   }) : super(endPoint + "dropdown_options") {}
 
   @override

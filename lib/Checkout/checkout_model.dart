@@ -103,12 +103,12 @@ class CheckoutModel extends ChangeNotifier {
     try {
       var dataResponse = otpRequest.response;
       if (dataResponse['success'] == true) {
-        Map addressDetail = dataResponse["address_detail"];
+        var addressDetail = dataResponse["address_detail"];
         Constants.showToast('Address Added Successfully');
         //
 
-        myAddressesId = addressDetail["id"];
-        myAddressesToShow = addressDetail["address_type"];
+        // myAddressesId = addressDetail["id"];
+        // myAddressesToShow = addressDetail["address_type"];
         areaName = '';
         latitude = '';
         longitude = '';
@@ -155,7 +155,7 @@ class CheckoutModel extends ChangeNotifier {
                       padding: EdgeInsets.only(right: 50.0),
                       height: 50,
                       child: Text(
-                        messages,
+                        'messages',
                         overflow: TextOverflow.ellipsis,
                         style: new TextStyle(
                           fontSize: 12.0,
@@ -168,12 +168,12 @@ class CheckoutModel extends ChangeNotifier {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },

@@ -8,7 +8,7 @@ class WSGetActiveOrdersListRequest extends APIRequest {
 
   WSGetActiveOrdersListRequest({
     endPoint,
-    this.userId,
+    this.userId = '',
   }) : super(endPoint + "my_active_orders") {}
 
   @override

@@ -83,7 +83,7 @@ Widget enterPassword(model) {
     fillColor: Colors.grey.withOpacity(0.2),
     hintText: 'password',
     obsecureText: true,
-    onSaved: (String val) {},
+    onSaved: (String? val) {},
     onChanged: (value) {},
     // validatorFieldValue: 'password',
     validator: validatePassword,

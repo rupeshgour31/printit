@@ -31,7 +31,7 @@ class _SelectProposalState extends State<SelectProposal> {
   }
 
   void getProposalsList() async {
-    progressHUD.state.show();
+    // progressHUD.state.show();
     var otpRequest = WSGetAcceptProposalsListRequest(
       endPoint: APIManager.endpoint,
       orderId: widget.orderData['id'].toString(),
@@ -41,12 +41,12 @@ class _SelectProposalState extends State<SelectProposal> {
       var dataResponse = otpRequest.response;
       if (dataResponse['success'] == true) {
         setState(() {
-          getProposals = dataResponse['data'];
+          // getProposals = dataResponse['data'];
         });
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
       } else {
         var messages = dataResponse['msg'];
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         // showDialog(
         //   context: context,
         //   builder: (BuildContext context) {
@@ -84,7 +84,7 @@ class _SelectProposalState extends State<SelectProposal> {
     }
   }
 
-  Map productSelctTocheckout;
+  Map? productSelctTocheckout;
 
   void selectPrintry(printry) {
     setState(() {
@@ -94,7 +94,7 @@ class _SelectProposalState extends State<SelectProposal> {
 
   @override
   void acceptProposal(printryIdGet, shop_name) async {
-    progressHUD.state.show();
+    // progressHUD.state.show();
     var otpRequest = WSAcceptProposalRequest(
       endPoint: APIManager.endpoint,
       orderId: widget.orderData['id'].toString(),
@@ -104,7 +104,7 @@ class _SelectProposalState extends State<SelectProposal> {
     try {
       var dataResponse = otpRequest.response;
       if (dataResponse['success'] == true) {
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         Navigator.pushNamed(
           context,
           '/checkoutTwo',
@@ -120,7 +120,7 @@ class _SelectProposalState extends State<SelectProposal> {
         );
       } else {
         var messages = dataResponse['msg'];
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         // showDialog(
         //   context: context,
         //   builder: (BuildContext context) {
@@ -160,8 +160,8 @@ class _SelectProposalState extends State<SelectProposal> {
 
   printerySelected() async {
     acceptProposal(
-      productSelctTocheckout['printery_id'],
-      productSelctTocheckout['shop_name'],
+      productSelctTocheckout!['printery_id'],
+      productSelctTocheckout!['shop_name'],
     );
   }
 
@@ -223,7 +223,7 @@ class _SelectProposalState extends State<SelectProposal> {
                               var selectedPrintID = "";
                               if (productSelctTocheckout != null) {
                                 selectedPrintID =
-                                    productSelctTocheckout["printery_id"];
+                                    productSelctTocheckout!["printery_id"];
                               }
                               return GestureDetector(
 
@@ -410,7 +410,7 @@ class _SelectProposalState extends State<SelectProposal> {
               ),
             ),
           ),
-          progressHUD,
+          // progressHUD,
         ],
       ),
       bottomNavigationBar: bottomNavContainer(

@@ -6,7 +6,7 @@ import 'package:printit_app/Api/request_manager.dart';
 class WSGetOrderRequest extends APIRequest {
   String userID;
 
-  WSGetOrderRequest({endPoint, this.userID}) : super(endPoint + "myorders") {}
+  WSGetOrderRequest({endPoint, this.userID = ''}) : super(endPoint + "myorders") {}
 
   @override
   Map<String, Object> getParams() {

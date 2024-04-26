@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:progress_hud/progress_hud.dart';
+// import 'package:progress_hud/progress_hud.dart';
 
 SizedBox heightSizedBox(height) {
   return SizedBox(
@@ -21,11 +21,11 @@ TextStyle labelHintFontStyle = TextStyle(
 );
 
 Divider dividerCommon({
-  double height,
-  double thickness,
-  double indent,
-  double endIndent,
-  Color color,
+  double? height,
+  double? thickness,
+  double? indent,
+  double? endIndent,
+  Color? color,
 }) {
   return Divider(
     height: height,
@@ -166,7 +166,7 @@ Widget topContainerAndImage(context, imageShow) {
   );
 }
 
-Widget chooseQnantity(context, model) {
+ chooseQnantity(context, model) {
   showModalBottomSheet(
     backgroundColor: Colors.transparent,
     context: context,
@@ -240,7 +240,7 @@ List paperSize = [
   'Option 15',
 ];
 
-Widget selectPaperTypeBottomSheet(context) {
+ selectPaperTypeBottomSheet(context) {
   showModalBottomSheet(
     backgroundColor: Colors.transparent,
     context: context,
@@ -293,7 +293,7 @@ Widget selectPaperTypeBottomSheet(context) {
   );
 }
 
-Widget chooseQnt(context, model) {
+ chooseQnt(context, model) {
   showModalBottomSheet(
     backgroundColor: Colors.transparent,
     context: context,
@@ -450,20 +450,7 @@ Widget pageDetailView(drawerItems, context, model) {
   );
 }
 
-ProgressHUD progressHUD = ProgressHUD(
-  // loading: false,
-  // backgroundColor: Colors.black12,
-  // color: Colors.white,
-  // containerColor: Color(0xFF23485A),
-  // borderRadius: 5.0,
-  // text: 'Loading...',
-  loading: false,
-  backgroundColor: Colors.black12,
-  color: Colors.white,
-  containerColor: Color(0xff001b29),
-  borderRadius: 5.0,
-  text: 'Loading...',
-);
+progressHUD() {return  Container();}
 
 dataSplit(str, splitWith) {
   return str.toString().split(splitWith);

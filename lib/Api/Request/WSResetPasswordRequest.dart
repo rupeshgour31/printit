@@ -7,7 +7,7 @@ class WSResetPasswordRequest extends APIRequest {
 
   WSResetPasswordRequest({
     endPoint,
-    this.email,
+    this.email='',
   }) : super(endPoint + "forgotpass") {}
 
   @override

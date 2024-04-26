@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
-  final VoidCallback onPressed;
-  final String buttonName;
-  final Key key;
+  final VoidCallback? onPressed;
+  final String? buttonName;
+  final Key? key;
   final decoration;
-  final double btnWidth;
-  final double btnHeight;
-  final Color color;
-  final Color btnColor;
-  final Color borderColor;
-  final Color textColor;
+  final double? btnWidth;
+  final double? btnHeight;
+  final Color? color;
+  final Color? btnColor;
+  final Color? borderColor;
+  final Color? textColor;
 
   Button({
     this.buttonName,
@@ -33,20 +33,23 @@ class Button extends StatelessWidget {
       child: Container(
         height: btnHeight ?? 43.0,
         width: btnWidth,
+        alignment: Alignment.center,
         decoration: BoxDecoration(
           color: btnColor ?? Colors.transparent,
           borderRadius: decoration ?? BorderRadius.circular(2.0),
+          //   borderRadius: decoration ?? BorderRadius.circular(2.0),
+          //   side: BorderSide(color: borderColor ?? Colors.transparent),
         ),
-        child: RaisedButton(
-          shape: RoundedRectangleBorder(
-            borderRadius: decoration ?? BorderRadius.circular(2.0),
-            side: BorderSide(color: borderColor ?? Colors.transparent),
-          ),
-          key: key,
-          elevation: 3.0,
-          color: color,
+        child: GestureDetector(
+          // shape: RoundedRectangleBorder(
+          //   borderRadius: decoration ?? BorderRadius.circular(2.0),
+          //   side: BorderSide(color: borderColor ?? Colors.transparent),
+          // ),
+          // key: key,
+          // elevation: 3.0,
+          // color: color,
           child: Text(
-            buttonName,
+            buttonName ?? '',
             style: TextStyle(
               inherit: true,
               color: textColor ?? Colors.white,
@@ -56,7 +59,7 @@ class Button extends StatelessWidget {
               letterSpacing: 0.3,
             ),
           ),
-          onPressed: onPressed,
+          onTap: onPressed,
         ),
       ),
     );

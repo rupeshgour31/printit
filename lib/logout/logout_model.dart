@@ -9,10 +9,10 @@ class LogoutModel with ChangeNotifier {
   }
 
   Logout(context) async {
-    progressHUD.state.show();
+    // progressHUD.state.show();
     notifyListeners();
     // await Provider.of<LogoutModel>(context).logout(context);
-    progressHUD.state.dismiss();
+    // progressHUD.state.dismiss();
     notifyListeners();
 
     Navigator.pushAndRemoveUntil(

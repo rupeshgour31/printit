@@ -11,11 +11,11 @@ class WSSApplyPromoCodeRequest extends APIRequest {
 
   WSSApplyPromoCodeRequest({
     endPoint,
-    this.couponCode,
-    this.orderId,
-    this.vendorCharge,
-    this.serviceType,
-    this.pickupDelivery,
+    this.couponCode='',
+    this.orderId='',
+    this.vendorCharge='',
+    this.serviceType='',
+    this.pickupDelivery='',
   }) : super(endPoint + "apply_coupon") {}
 
   @override

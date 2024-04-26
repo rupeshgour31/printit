@@ -77,13 +77,13 @@ class _CheckoutOneState extends State<CheckoutOne> {
   getValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var status = prefs.getBool('isLoggedIn') ?? false;
-    var getLang = json.decode(prefs.getString('language_select'));
+    var getLang = json.decode(prefs.getString('language_select')??'');
     languageType = getLang ?? 'english';
     if (status) {
       setState(
         () {
-          user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          user_id = json.decode(prefs.getString('login_user_id')??'');
+          get_print_type = json.decode(prefs.getString('set_print_type')??'');
         },
       );
     } else {
@@ -101,8 +101,8 @@ class _CheckoutOneState extends State<CheckoutOne> {
     try {
       var dataResponse = otpRequest.response;
       if (dataResponse['success'] == true) {
-        Map dataObj = dataResponse['data'];
-        print('Product Array ${dataObj['products']}');
+        var dataObj = dataResponse['data'];
+        // print('Product Array ${dataObj['products']}');
 
         setState(() {
           getOrderPriceDetails = dataResponse['data'];
@@ -164,7 +164,7 @@ class _CheckoutOneState extends State<CheckoutOne> {
                   ),
                   widthSizedBox(5.0),
                   Text(
-                    messages,
+                    'messages',
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     // overflow: TextOverflow.ellipsis,
@@ -172,12 +172,12 @@ class _CheckoutOneState extends State<CheckoutOne> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },
@@ -204,7 +204,7 @@ class _CheckoutOneState extends State<CheckoutOne> {
       if (dataResponse['success'] == true) {
         print("myAddresses $myAddresses");
         setState(() {
-          myAddresses = dataResponse['data'];
+          // myAddresses = dataResponse['data'];
           _isLoading = false;
         });
       } else {
@@ -250,7 +250,7 @@ class _CheckoutOneState extends State<CheckoutOne> {
   }
 
   Map<String, Marker> _markers = {};
-  CameraPosition _kGooglePlex;
+  CameraPosition? _kGooglePlex;
   Completer<GoogleMapController> _controller = Completer();
 
   getLocation() async {
@@ -286,7 +286,7 @@ class _CheckoutOneState extends State<CheckoutOne> {
       myLocationEnabled: false,
       mapType: MapType.normal,
       myLocationButtonEnabled: false,
-      initialCameraPosition: _kGooglePlex,
+      initialCameraPosition: _kGooglePlex!,
       onMapCreated: (GoogleMapController controller) {
         _controller.complete(controller);
       },
@@ -519,7 +519,7 @@ class _CheckoutOneState extends State<CheckoutOne> {
                     ),
                     widthSizedBox(5.0),
                     Text(
-                      messages,
+                      'messages',
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       // overflow: TextOverflow.ellipsis,
@@ -527,12 +527,12 @@ class _CheckoutOneState extends State<CheckoutOne> {
                   ],
                 ),
                 actions: <Widget>[
-                  FlatButton(
-                    child: new Text("OK"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  // FlatButton(
+                  //   child: new Text("OK"),
+                  //   onPressed: () {
+                  //     Navigator.of(context).pop();
+                  //   },
+                  // ),
                 ],
               );
             },
@@ -635,7 +635,7 @@ class _CheckoutOneState extends State<CheckoutOne> {
                     ),
                     widthSizedBox(5.0),
                     Text(
-                      messages,
+                      'messages',
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       // overflow: TextOverflow.ellipsis,
@@ -643,12 +643,12 @@ class _CheckoutOneState extends State<CheckoutOne> {
                   ],
                 ),
                 actions: <Widget>[
-                  FlatButton(
-                    child: new Text("OK"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  // FlatButton(
+                  //   child: new Text("OK"),
+                  //   onPressed: () {
+                  //     Navigator.of(context).pop();
+                  //   },
+                  // ),
                 ],
               );
             },
@@ -714,7 +714,7 @@ class _CheckoutOneState extends State<CheckoutOne> {
                     ),
                     widthSizedBox(5.0),
                     Text(
-                      messages,
+                      'messages',
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       // overflow: TextOverflow.ellipsis,
@@ -722,12 +722,12 @@ class _CheckoutOneState extends State<CheckoutOne> {
                   ],
                 ),
                 actions: <Widget>[
-                  FlatButton(
-                    child: new Text("OK"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  // FlatButton(
+                  //   child: new Text("OK"),
+                  //   onPressed: () {
+                  //     Navigator.of(context).pop();
+                  //   },
+                  // ),
                 ],
               );
             },
@@ -771,12 +771,12 @@ class _CheckoutOneState extends State<CheckoutOne> {
               ],
             ),
             actions: <Widget>[
-              FlatButton(
-                child: new Text("OK"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
+              // FlatButton(
+              //   child: new Text("OK"),
+              //   onPressed: () {
+              //     Navigator.of(context).pop();
+              //   },
+              // ),
             ],
           );
         },

@@ -7,7 +7,7 @@ class WSGetAcceptProposalsListRequest extends APIRequest {
 
   WSGetAcceptProposalsListRequest({
     endPoint,
-    this.orderId,
+    this.orderId = '',
   }) : super(endPoint + "translation_proposals") {}
 
   @override

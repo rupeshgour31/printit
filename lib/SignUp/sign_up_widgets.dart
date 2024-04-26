@@ -16,7 +16,7 @@ Widget signUpFirstName(model) {
     fillColor: Colors.grey.withOpacity(0.2),
     hintText: 'First Name',
     validatorFieldValue: 'First Name',
-    validator: validateName,
+    // validator: validateName,
     keyBoardType: TextInputType.emailAddress,
   );
 }
@@ -55,30 +55,30 @@ Widget signUpAddress(model) {
             onPressed: () async {
               // show input autocomplete with selected mode
               // then get the Prediction selected
-              Prediction p = await PlacesAutocomplete.show(
-                context: context,
-                apiKey: kGoogleApiKey,
-                onError: onError,
-                mode: _mode,
-                language: "en",
-                components: [Component(Component.country, "kw")],
-              );
-              if (p != null) {
-                print("PlaceID ${p.placeId}");
-                PlacesDetailsResponse detail =
-                await _places.getDetailsByPlaceId(p.placeId);
-                print("detail ${detail.errorMessage}");
-                var placeId = p.placeId;
-                double lat = detail.result.geometry.location.lat;
-                double lng = detail.result.geometry.location.lng;
-                model.latitude = lat.toString();
-                model.longitude = lng.toString();
-
-                model.setAreaName(detail.result.formattedAddress);
-                setState(() {});
-                print("lat $lat");
-                print("lng $lng");
-              }
+              // Prediction p = await PlacesAutocomplete.show(
+              //   context: context,
+              //   apiKey: kGoogleApiKey,
+              //   onError: onError,
+              //   mode: _mode,
+              //   language: "en",
+              //   components: [Component(Component.country, "kw")],
+              // );
+              // if (p != null) {
+              //   print("PlaceID ${p.placeId}");
+              //   PlacesDetailsResponse detail =
+              //   await _places.getDetailsByPlaceId(p.placeId);
+              //   print("detail ${detail.errorMessage}");
+              //   var placeId = p.placeId;
+              //   double lat = detail.result.geometry.location.lat;
+              //   double lng = detail.result.geometry.location.lng;
+              //   model.latitude = lat.toString();
+              //   model.longitude = lng.toString();
+              //
+              //   model.setAreaName(detail.result.formattedAddress);
+              //   setState(() {});
+              //   print("lat $lat");
+              //   print("lng $lng");
+              // }
             },
           ),
         );
@@ -137,7 +137,7 @@ Widget signUpPassword(model) {
       },
     ),
     validatorFieldValue: 'password',
-    validator: validatePassword,
+    // validator: validatePassword,
     keyBoardType: TextInputType.text,
   );
 }

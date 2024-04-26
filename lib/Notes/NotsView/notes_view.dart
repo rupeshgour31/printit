@@ -50,13 +50,13 @@ class _NotesViewState extends State<NotesView> {
   getValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     loginStatus = prefs.getBool('isLoggedIn') ?? false;
-    var getLang = json.decode(prefs.getString('language_select'));
+    var getLang = json.decode(prefs.getString('language_select')??'');
     languageType = getLang ?? 'english';
     if (loginStatus) {
       setState(
         () {
-          user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          user_id = json.decode(prefs.getString('login_user_id')??'');
+          get_print_type = json.decode(prefs.getString('set_print_type')??'');
         },
       );
     } else {
@@ -767,7 +767,7 @@ class _NotesViewState extends State<NotesView> {
                                           color: Color(0xff2995cc),
                                           btnWidth: 260.0,
                                           onPressed: () {
-                                            if (formKey.currentState
+                                            if (formKey.currentState!
                                                 .validate()) {
                                               Navigator.of(context).pop();
                                               saveOrder(

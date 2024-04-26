@@ -3,9 +3,9 @@ import 'package:printit_app/Api/request_manager.dart';
 import 'dart:convert';
 
 class WSChangePasswordRequest extends APIRequest {
-  String userId;
-  String oldPassword;
-  String newPassword;
+  String? userId;
+  String? oldPassword;
+  String? newPassword;
 
   WSChangePasswordRequest({
     endPoint,
@@ -17,10 +17,10 @@ class WSChangePasswordRequest extends APIRequest {
   @override
   Map<String, Object> getParams() {
     Map<String, Object> params = Map<String, Object>();
-    params["user_id"] = this.userId;
-    params["old_password"] = this.oldPassword;
-    params["password"] = this.newPassword;
-    params["cpassword"] = this.newPassword;
+    params["user_id"] = this.userId!;
+    params["old_password"] = this.oldPassword!;
+    params["password"] = this.newPassword!;
+    params["cpassword"] = this.newPassword!;
     return params;
   }
 

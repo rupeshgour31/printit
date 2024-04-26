@@ -46,7 +46,7 @@ class _DashboardState extends State<Dashboard> {
   bool isDrawerOpen = false;
 
 //languageType == 'english' ?
-  var printOptions = [
+  List printOptions = [
     {
       "icon": Icons.local_print_shop_outlined,
       "icons": "assets/icons/customPrintIcon.png",
@@ -87,7 +87,7 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     Future.delayed(Duration.zero, () async {
       await getValuesSF();
-      await getActiveOrders();
+      // await getActiveOrders();
     });
     super.initState();
   }
@@ -100,7 +100,7 @@ class _DashboardState extends State<Dashboard> {
     if (status) {
       setState(
         () {
-          user_id = json.decode(prefs.getString('login_user_id'));
+          user_id = json.decode(prefs.getString('login_user_id')??'');
         },
       );
     } else {
@@ -119,14 +119,14 @@ class _DashboardState extends State<Dashboard> {
     try {
       var dataResponse = orderReq.response;
       if (dataResponse['success'] == true) {
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         setState(() {
-          activeOrdersList = dataResponse["data"];
+          // activeOrdersList = dataResponse["data"];
         });
       }
-      progressHUD.state.dismiss();
+      // progressHUD.state.dismiss();
     } catch (e) {
-      progressHUD.state.dismiss();
+      // progressHUD.state.dismiss();
       print('Error: ${e.toString()}');
     }
   }
@@ -146,7 +146,7 @@ class _DashboardState extends State<Dashboard> {
   bool showBtn = true;
 
   Widget buildCusTomPrintView(BuildContext context, int index) {
-    var printOption = printOptions[index];
+    // var printOption = printOptions[index];
     var isCurrentIndexSelected = false;
     if (index == selectedIndex) {
       isCurrentIndexSelected = true;
@@ -171,7 +171,7 @@ class _DashboardState extends State<Dashboard> {
           ),
         ),
         child: Stack(
-          overflow: Overflow.visible,
+          // overflow: Overflow.visible,
           alignment: AlignmentDirectional.topStart,
           children: <Widget>[
             Positioned(
@@ -196,11 +196,11 @@ class _DashboardState extends State<Dashboard> {
                 onTap: () {},
                 child: CircleAvatar(
                   radius: 25,
-                  backgroundColor: printOption["Color"],
+                  // backgroundColor: printOption["Color"],
                   child: IconButton(
                     icon: Image.asset(
-                      printOption["icons"],
-                      color: printOption["name"] == 'NOTES'
+                      printOptions[index]["icons"],
+                      color: printOptions[index]["name"] == 'NOTES'
                           ? Colors.black
                           : Colors.white,
                     ),
@@ -232,13 +232,11 @@ class _DashboardState extends State<Dashboard> {
                   : MediaQuery.of(context).size.width / 2 + 30,
               top: 10,
               child: Text(
-                languageType == 'arabic'
-                    ? printOption["arabicName"]
-                    : printOption["name"],
+                '${printOptions[index]["name"]}',
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
                     color: (isCurrentIndexSelected)
-                        ? printOption["Color"]
+                        ? printOptions[index]["Color"]
                         : Colors.white70,
                     fontWeight: FontWeight.bold,
                     fontSize: 20),
@@ -787,7 +785,7 @@ class _DashboardState extends State<Dashboard> {
                 ],
               ),
             ),
-            progressHUD,
+            // progressHUD,
           ],
         );
       },
@@ -801,7 +799,7 @@ class PathPainter extends CustomPainter {
   String printType;
 
   PathPainter(
-      {this.currentSelectedIndex, this.stautsbarHeight, this.printType});
+      {required this.currentSelectedIndex, required this.stautsbarHeight, required this.printType});
 
   @override
   void paint(Canvas canvas, Size size) {

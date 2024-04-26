@@ -54,7 +54,7 @@ class _SelectPrintShopState extends State<SelectPrintShop> {
       setState(
         () {
           // user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          get_print_type = json.decode(prefs.getString('set_print_type')??'');
         },
       );
       print('@ GHG ${get_print_type}');
@@ -75,7 +75,7 @@ class _SelectPrintShopState extends State<SelectPrintShop> {
       if (dataResponse['success'] == true) {
         if (dataResponse['msg'] == null) {
           setState(() {
-            printiesArray = dataResponse['data'];
+            // printiesArray = dataResponse['data'];
             projectName = dataResponse['project_name'];
             orderType = dataResponse['order_type'];
             _isLoading = false;
@@ -105,7 +105,7 @@ class _SelectPrintShopState extends State<SelectPrintShop> {
                   ),
                   widthSizedBox(5.0),
                   Text(
-                    messages,
+                    'messages',
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     // overflow: TextOverflow.ellipsis,
@@ -113,12 +113,12 @@ class _SelectPrintShopState extends State<SelectPrintShop> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },
@@ -174,7 +174,7 @@ class _SelectPrintShopState extends State<SelectPrintShop> {
                   ),
                   widthSizedBox(5.0),
                   Text(
-                    messages,
+                    'messages',
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     // overflow: TextOverflow.ellipsis,
@@ -182,12 +182,12 @@ class _SelectPrintShopState extends State<SelectPrintShop> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },

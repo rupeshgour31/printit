@@ -6,7 +6,7 @@ import 'package:printit_app/Api/request_manager.dart';
 class WSGetOrderDetailsRequest extends APIRequest {
   String orderID;
 
-  WSGetOrderDetailsRequest({endPoint, this.orderID})
+  WSGetOrderDetailsRequest({endPoint, this.orderID = ''})
       : super(endPoint + "order_price_detail") {}
 
   @override

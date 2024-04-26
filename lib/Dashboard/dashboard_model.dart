@@ -6,7 +6,7 @@ class AccountInfoModel extends ChangeNotifier {
   Color genderFieldColor = whiteColor;
   bool _obscureGender = false;
   bool _obscureGenderFemale = true;
-  String seGender;
+  String seGender = '';
   bool get obscureGenderFemale => _obscureGenderFemale;
   bool get obscureGenderMale => _obscureGender;
 

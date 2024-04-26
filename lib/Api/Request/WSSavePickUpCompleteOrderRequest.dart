@@ -11,11 +11,11 @@ class WSSavePickUpCompleteOrderRequest extends APIRequest {
 
   WSSavePickUpCompleteOrderRequest({
     endPoint,
-    this.printryId,
-    this.vendorCharge,
-    this.pickupDelivery,
-    this.orderId,
-    this.userId,
+    this.printryId='',
+    this.vendorCharge='',
+    this.pickupDelivery='',
+    this.orderId='',
+    this.userId='',
   }) : super(endPoint + "complete_order") {}
 
   @override

@@ -13,13 +13,13 @@ class WSSaveCompleteOrderWithNewAddress extends APIRequest {
 
   WSSaveCompleteOrderWithNewAddress({
     endPoint,
-    this.printryId,
-    this.vendorCharge,
-    this.pickupDelivery,
-    this.orderId,
-    this.userId,
-    this.address,
-    this.label,
+    this.printryId='',
+    this.vendorCharge='',
+    this.pickupDelivery='',
+    this.orderId='',
+    this.userId='',
+    this.address='',
+    this.label='',
   }) : super(endPoint + "complete_order") {}
 
   @override

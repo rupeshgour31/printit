@@ -9,8 +9,8 @@ class WSLogoutRequest extends APIRequest {
 
   WSLogoutRequest({
     endPoint,
-    this.user_id,
-    this.deviceToken,
+    this.user_id='',
+    this.deviceToken='',
   }) : super(endPoint + "logout") {}
 
   @override

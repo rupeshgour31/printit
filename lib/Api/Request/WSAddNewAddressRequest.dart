@@ -4,23 +4,23 @@ import 'package:http/http.dart' as http;
 import 'package:printit_app/Api/request_manager.dart';
 
 class WSAddNewAddressRequest extends APIRequest {
-  String user_id;
-  String label;
-  String address;
-  String address_type;
-  String block;
-  String street;
-  String building;
-  String house;
-  String mobile;
-  String apartment_no;
-  String floor;
-  String avenue;
-  String additional_directions;
-  String landline;
-  String office;
-  String latitude;
-  String longitude;
+  String? user_id;
+  String? label;
+  String? address;
+  String? address_type;
+  String? block;
+  String? street;
+  String? building;
+  String? house;
+  String? mobile;
+  String? apartment_no;
+  String? floor;
+  String? avenue;
+  String? additional_directions;
+  String? landline;
+  String? office;
+  String? latitude;
+  String? longitude;
 
 
   WSAddNewAddressRequest({
@@ -47,23 +47,23 @@ class WSAddNewAddressRequest extends APIRequest {
   @override
   Map<String, Object> getParams() {
     Map<String, Object> params = Map<String, Object>();
-    params["user_id"] = this.user_id;
-    params["label"] = this.label;
-    params["address"] = this.address;
-    params["address_type"] = this.address_type;
-    params["block"] = this.block;
-    params["street"] = this.street;
-    params["building"] = this.building;
-    params["house"] = this.house;
-    params["mobile"] = this.mobile;
-    params["apartment_no"] = this.apartment_no;
-    params["floor"] = this.floor;
-    params["avenue"] = this.avenue;
-    params["additional_directions"] = this.additional_directions;
-    params["landline"] = this.landline;
-    params["office"] = this.office;
-    params['latitude'] = this.latitude;
-    params['longitude'] = this.longitude;
+    params["user_id"] = this.user_id!;
+    params["label"] = this.label!;
+    params["address"] = this.address!;
+    params["address_type"] = this.address_type!;
+    params["block"] = this.block!;
+    params["street"] = this.street!;
+    params["building"] = this.building!;
+    params["house"] = this.house!;
+    params["mobile"] = this.mobile!;
+    params["apartment_no"] = this.apartment_no!;
+    params["floor"] = this.floor!;
+    params["avenue"] = this.avenue!;
+    params["additional_directions"] = this.additional_directions!;
+    params["landline"] = this.landline!;
+    params["office"] = this.office!;
+    params['latitude'] = this.latitude!;
+    params['longitude'] = this.longitude!;
     return params;
   }
 

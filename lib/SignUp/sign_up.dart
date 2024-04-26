@@ -26,7 +26,7 @@ class _SignUpState extends State<SignUp> {
   @override
   getValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var getLang = json.decode(prefs.getString('language_select'));
+    var getLang = json.decode(prefs.getString('language_select')!);
     languageType = getLang ?? 'english';
   }
 
@@ -86,7 +86,7 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
-                progressHUD,
+                // progressHUD,
               ],
             ),
             // bottomNavigationBar: doneSignUp(context, formKey, model),

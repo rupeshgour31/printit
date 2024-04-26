@@ -28,7 +28,7 @@ Widget signInEmail(model) {
     fillColor: Colors.grey.withOpacity(0.2),
     hintText: 'Email',
     validatorFieldValue: 'email',
-    validator: validateEmailField,
+    // validator: validateEmailField,
     keyBoardType: TextInputType.emailAddress,
   );
 }
@@ -52,7 +52,7 @@ Widget signInPassword(model) {
       },
     ),
     validatorFieldValue: 'password',
-    validator: validatePassword,
+    // validator: validatePassword,
     keyBoardType: TextInputType.text,
   );
 }

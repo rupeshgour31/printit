@@ -13,7 +13,7 @@ class APIManager {
 
       String url = request.endPoint;
       Map<String, Object> params = request.getParams();
-      Map<String, Object> headers = request.getHeaders();
+      var headers = request.getHeaders();
 
       if (showLog) {
         print("URL: $url");
@@ -22,7 +22,7 @@ class APIManager {
       }
 
       final http.Response response =
-          await http.post(url, headers: headers, body: jsonEncode(params));
+          await http.post(Uri.parse(url), headers: headers, body: jsonEncode(params));
 
       print("statusCode: ${response.statusCode}");
 
@@ -34,7 +34,7 @@ class APIManager {
         String errorMessage = "";
 
         Map<String, Object> errors = jsonDecode(response.body);
-        if (errors.containsKey('errors')) {
+        /*if (errors.containsKey('errors')) {
           List<dynamic> errorList = errors['errors'];
           for (int i = 0; i < errorList.length; i++) {
             Map<String, Object> error = errorList[i];
@@ -56,7 +56,7 @@ class APIManager {
           } else {
             print("Error 3: ${response.body}");
           }
-        }
+        }*/
       } else {
         print("Error 4: ${response.body}");
       }
@@ -74,7 +74,7 @@ class APIManager {
 
       String url = request.endPoint;
       Map<String, Object> params = request.getParams();
-      Map<String, Object> headers = request.getHeaders();
+      var headers = request.getHeaders();
 
       if (showLog) {
         print("URL: $url");
@@ -83,7 +83,7 @@ class APIManager {
       }
 
       final http.Response response =
-      await http.get(url, headers: headers);
+      await http.get(Uri.parse(url), headers: headers);
 
       print("statusCode: ${response.statusCode}");
 
@@ -95,7 +95,7 @@ class APIManager {
         String errorMessage = "";
 
         Map<String, Object> errors = jsonDecode(response.body);
-        if (errors.containsKey('errors')) {
+        /*if (errors.containsKey('errors')) {
           List<dynamic> errorList = errors['errors'];
           for (int i = 0; i < errorList.length; i++) {
             Map<String, Object> error = errorList[i];
@@ -117,7 +117,7 @@ class APIManager {
           } else {
             print("Error 3: ${response.body}");
           }
-        }
+        }*/
       } else {
         print("Error 4: ${response.body}");
       }

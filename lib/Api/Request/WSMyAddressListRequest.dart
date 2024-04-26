@@ -5,7 +5,7 @@ import 'package:printit_app/Api/request_manager.dart';
 
 class WSMyAddressListRequest extends APIRequest {
   String userID;
-  WSMyAddressListRequest({endPoint, this.userID})
+  WSMyAddressListRequest({endPoint, this.userID=''})
       : super(endPoint + 'my_address_list') {}
 
   @override

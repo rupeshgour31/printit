@@ -7,7 +7,7 @@ class WSOrderPriceDetailsRequest extends APIRequest {
   String email;
   String password;
 
-  WSOrderPriceDetailsRequest({endPoint, this.email, this.password})
+  WSOrderPriceDetailsRequest({endPoint, this.email='', this.password=''})
       : super(endPoint + "order_price_detail") {}
 
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:printit_app/Common/common_widgets.dart';
 
-Widget commonAppbar(String title, BuildContext context, suffixIcon) {
+ commonAppbar(String title, BuildContext context, suffixIcon) {
   return PreferredSize(
     preferredSize: Size.fromHeight(80),
     child: Padding(

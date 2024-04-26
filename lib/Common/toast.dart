@@ -7,7 +7,7 @@ class Constants {
       msg: toast,
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
-      timeInSecForIos: 1,
+      // timeInSecForIos: 1,
       backgroundColor: Color(0xff21335A),
       textColor: Colors.white,
     );

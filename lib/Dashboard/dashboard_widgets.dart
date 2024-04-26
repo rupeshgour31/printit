@@ -4,7 +4,7 @@ import 'package:printit_app/Common/my_text_field.dart';
 
 class SlideRightRoute extends PageRouteBuilder {
   final Widget page;
-  SlideRightRoute({this.page})
+  SlideRightRoute({required this.page})
       : super(
           pageBuilder: (
             BuildContext context,

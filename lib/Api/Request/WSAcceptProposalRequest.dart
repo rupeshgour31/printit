@@ -8,8 +8,8 @@ class WSAcceptProposalRequest extends APIRequest {
 
   WSAcceptProposalRequest({
     endPoint,
-    this.orderId,
-    this.printryId,
+    this.orderId = '',
+    this.printryId = '',
   }) : super(endPoint + "accept_proposal") {}
 
   @override

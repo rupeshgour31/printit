@@ -7,7 +7,7 @@ class APIRequest {
   APIRequest(this.endPoint);
 
   Map<String, Object> getParams() {
-    return null;
+    return {};
   }
 
   Map<String, String> getHeaders() {

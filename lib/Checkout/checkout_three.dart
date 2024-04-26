@@ -38,7 +38,7 @@ class _CheckoutThreeState extends State<CheckoutThree> {
       setState(
         () {
           // user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          get_print_type = json.decode(prefs.getString('set_print_type')??'');
         },
       );
     }
@@ -46,7 +46,7 @@ class _CheckoutThreeState extends State<CheckoutThree> {
 
   getPriceDetails() async {
     print('@ GHG ${get_print_type}');
-    progressHUD.state.show();
+    // progressHUD.state.show();
     var otpRequest = WSGetOrderDetailsRequest(
       endPoint: APIManagerForm.endpoint,
       orderID: orderId.toString(),
@@ -59,19 +59,19 @@ class _CheckoutThreeState extends State<CheckoutThree> {
         setState(() {
           getOrderPriceDetails = dataResponse['data'];
         });
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
       }
     } catch (e) {
       print('Error: ${e.toString()}');
     }
-    progressHUD.state.dismiss();
+    // progressHUD.state.dismiss();
   }
 
   @override
   Widget build(BuildContext context) {
-    final Map product = ModalRoute.of(context).settings.arguments;
+    final  product = ModalRoute.of(context)!.settings.arguments;
     setState(() {
-      orderId = product['orderDetails']['order_id'].toString();
+      // orderId = product['orderDetails']['order_id'].toString();
     });
     return WillPopScope(
       onWillPop: () async => false,
@@ -161,12 +161,13 @@ class _CheckoutThreeState extends State<CheckoutThree> {
                               checkOut(true, 3),
                               heightSizedBox(20.0),
                               orderDetails(
-                                product['orderDetails'],
+                                '',
+                                // product['orderDetails'],
                                 getOrderPriceDetails,
                               ),
                               heightSizedBox(20.0),
                               heightSizedBox(20.0),
-                              printShop(product['orderDetails']),
+                              // printShop(product['orderDetails']),
                               heightSizedBox(20.0),
                             ],
                           ),
@@ -174,7 +175,7 @@ class _CheckoutThreeState extends State<CheckoutThree> {
                       ),
                     ),
                   ),
-                  progressHUD,
+                  // progressHUD,
                 ],
               ),
             ),

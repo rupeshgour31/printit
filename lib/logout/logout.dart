@@ -32,7 +32,7 @@ class _LogoutState extends State<Logout> {
           //   backgroundColor: whiteColor,
           //   key: _scaffoldKey,
           // ),
-          progressHUD,
+          // progressHUD,
         ],
       ),
     );

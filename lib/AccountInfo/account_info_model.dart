@@ -9,10 +9,10 @@ class AccountInfoModel extends ChangeNotifier {
   Color genderFieldColor = whiteColor;
   bool _obscureGender = false;
   bool _obscureGenderFemale = true;
-  String seGender;
+  String seGender = '';
   bool get obscureGenderFemale => _obscureGenderFemale;
   bool get obscureGenderMale => _obscureGender;
-  TextEditingController editGenderController;
+  TextEditingController editGenderController = TextEditingController();
   TextEditingController editFirstNameController = TextEditingController();
   TextEditingController editMiddleNameController = TextEditingController();
   TextEditingController editLastNameController = TextEditingController();
@@ -45,7 +45,7 @@ class AccountInfoModel extends ChangeNotifier {
   }
 
   submit(context, user_id, accountInfo) async {
-    progressHUD.state.show();
+    // progressHUD.state.show();
     var otpRequest = WSUpdateProfileRequest(
       endPoint: APIManagerForm.endpoint,
       userId: user_id.toString(),
@@ -65,7 +65,7 @@ class AccountInfoModel extends ChangeNotifier {
     try {
       var dataResponse = otpRequest.response;
       if (dataResponse['success'] == true) {
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         Constants.showToast('Profile updated successfully.');
         Navigator.pop(context);
         editFirstNameController.clear();
@@ -73,7 +73,7 @@ class AccountInfoModel extends ChangeNotifier {
         editNumberController.clear();
         notifyListeners();
       } else {
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
       }
     } catch (e) {
       print('Error: ${e.toString()}');

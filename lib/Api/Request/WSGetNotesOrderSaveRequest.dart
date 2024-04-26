@@ -14,13 +14,13 @@ class WSGetNotesOrderSaveRequest extends APIRequest {
 
   WSGetNotesOrderSaveRequest({
     endPoint,
-    this.projectName,
-    this.notesId,
-    this.totalPages,
-    this.serviceType,
-    this.userId,
-    this.copyNumber,
-    this.color,
+    this.projectName='',
+    this.notesId='',
+    this.totalPages='',
+    this.serviceType='',
+    this.userId='',
+    this.copyNumber='',
+    this.color='',
   }) : super(endPoint + "save_notes_order") {}
 
   @override

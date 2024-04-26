@@ -12,12 +12,12 @@ class WSSaveCompleteOrderWithExistingAddressRequest extends APIRequest {
 
   WSSaveCompleteOrderWithExistingAddressRequest({
     endPoint,
-    this.printryId,
-    this.vendorCharge,
-    this.pickupDelivery,
-    this.orderId,
-    this.userId,
-    this.addressId,
+    this.printryId='',
+    this.vendorCharge='',
+    this.pickupDelivery='',
+    this.orderId='',
+    this.userId='',
+    this.addressId='',
   }) : super(endPoint + "complete_order") {}
 
   @override

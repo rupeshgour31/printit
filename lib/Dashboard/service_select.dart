@@ -21,7 +21,7 @@ class _ServiceSelectState extends State<ServiceSelect> {
   @override
   getValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var getLang = json.decode(prefs.getString('language_select'));
+    var getLang = json.decode(prefs.getString('language_select')??'');
     languageType = getLang ?? '0';
   }
 
@@ -72,6 +72,7 @@ class _ServiceSelectState extends State<ServiceSelect> {
             ),
             centerTitle: true,
             leading: IconButton(
+              onPressed: (){},
               icon: Image.asset(
                 'assets/icons/drawer.png',
                 height: 30,

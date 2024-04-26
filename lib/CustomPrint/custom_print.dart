@@ -28,7 +28,7 @@ class _CustomPrintState extends State<CustomPrint> {
   getValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     loginStatus = prefs.getBool('isLoggedIn') ?? false;
-    var getLang = json.decode(prefs.getString('language_select'));
+    var getLang = json.decode(prefs.getString('language_select')??'');
     setState(
       () {
         languageType = getLang ?? 'english';
@@ -47,7 +47,7 @@ class _CustomPrintState extends State<CustomPrint> {
 
       if (dataResponse['success'] == true) {
         setState(() {
-          customOptionsData = dataResponse['data'];
+          // customOptionsData = dataResponse['data'];
         });
       } else {
         var messages = dataResponse['msg'];
@@ -64,7 +64,7 @@ class _CustomPrintState extends State<CustomPrint> {
                   ),
                   widthSizedBox(5.0),
                   Text(
-                    messages,
+                    'messages',
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     // overflow: TextOverflow.ellipsis,
@@ -72,12 +72,12 @@ class _CustomPrintState extends State<CustomPrint> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },
@@ -182,7 +182,7 @@ class _CustomPrintState extends State<CustomPrint> {
                     ),
                   ),
           ),
-          progressHUD,
+          // progressHUD,
         ],
       ),
     );

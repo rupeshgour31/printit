@@ -34,7 +34,7 @@ class Poster extends StatefulWidget {
   @override
   final String printType;
 
-  const Poster({Key key, this.printType}) : super(key: key);
+  const Poster({Key? key, this.printType = ''}) : super(key: key);
 
   _PosterState createState() => _PosterState();
 }
@@ -274,7 +274,7 @@ class _PosterState extends State<Poster> {
     );
     await APIManagerForm.performRequest(dropDownReq, showLog: true);
     try {
-      var dataResponse = dropDownReq.response;
+      Map dataResponse = dropDownReq.response;
       paperType = dataResponse["paper_type"];
       paperSize = dataResponse["paper_size"];
       paperSides = dataResponse["printing_side"];
@@ -295,10 +295,10 @@ class _PosterState extends State<Poster> {
 
   @override
   void initState() {
-    Future.delayed(Duration.zero, () async {
-      await getValuesSF();
-      await getDropdownOptions();
-    });
+    // Future.delayed(Duration.zero, () async {
+    //   await getValuesSF();
+    //   await getDropdownOptions();
+    // });
 
     super.initState();
   }
@@ -308,7 +308,7 @@ class _PosterState extends State<Poster> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     loginStatus = prefs.getBool('isLoggedIn') ?? false;
     if (prefs.containsKey('language_select')) {
-      var getLang = json.decode(prefs.getString('language_select'));
+      var getLang = json.decode(prefs.getString('language_select')??'');
       languageType = getLang ?? 'english';
     } else {
       print('LOG TABBBB');
@@ -317,8 +317,8 @@ class _PosterState extends State<Poster> {
     if (loginStatus) {
       setState(
         () {
-          user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          user_id = json.decode(prefs.getString('login_user_id')??'');
+          get_print_type = json.decode(prefs.getString('set_print_type')??'');
         },
       );
     } else {
@@ -328,22 +328,21 @@ class _PosterState extends State<Poster> {
 
   @override
   Widget build(BuildContext context) {
-    print('sdfdsfdsfdsfkljf ${languageType}');
-    final Map<String, Object> rcvdData =
-        ModalRoute.of(context).settings.arguments;
-    var currentPrintType = rcvdData['printType'];
-    print_type_get = rcvdData['order_type'];
-    print_type_no = rcvdData['order_type_no'];
+    final rcvdData =
+        ModalRoute.of(context)!.settings.arguments as Map;
+    var currentPrintType = 'Poster';//rcvdData['printType'];
+    // print_type_get = rcvdData['order_type'];
+    // print_type_no = rcvdData['order_type_no'];
     var imageName = rcvdData['imageName'];
     var bluebarTopPosition = MediaQuery.of(context).size.height * 0.28;
     var blurbarHeight = 70.0;
     var optionImageHeight = 150.0;
-    var optionImageWidth = (currentPrintType == "Translate" ||
+    var optionImageWidth = /*(currentPrintType == "Translate" ||
             currentPrintType == 'ترجمة' ||
             currentPrintType == "Quick Print" ||
             currentPrintType == 'طباعة سريعة')
         ? 150.0
-        : 230.0;
+        : */230.0;
     var optionImageYPosition =
         bluebarTopPosition + blurbarHeight - optionImageHeight;
 
@@ -398,7 +397,6 @@ class _PosterState extends State<Poster> {
                           onPressed: () {
                             model.resetItemCount();
                             model.imageSavePath = '';
-                            model.image = null;
                             Navigator.of(context).pop();
                           },
                         ),
@@ -420,7 +418,6 @@ class _PosterState extends State<Poster> {
                           onPressed: () => {
                             model.resetItemCount(),
                             model.imageSavePath = '',
-                            model.image = null,
                             Navigator.of(context).pushNamedAndRemoveUntil(
                               HomePage.routeName,
                               (Route<dynamic> route) => false,
@@ -691,7 +688,7 @@ class _PosterState extends State<Poster> {
                             color: Color(0xff2995cc),
                             btnWidth: 260.0,
                             onPressed: () {
-                              if (formKey.currentState.validate()) {
+                              if (formKey.currentState!.validate()) {
                                 Navigator.of(context).pop();
                                 saveOrders(
                                   context,
@@ -1120,10 +1117,10 @@ class _PosterState extends State<Poster> {
     this.setState(() {});
   }
 
-  String fileName;
-  String path;
-  Map<String, String> paths;
-  List<String> extensions;
+  String fileName = '';
+  String path = ' ';
+  Map<String, String> paths = {};
+  List<String> extensions =[];
   bool isLoadingPath = false;
 
   void _openFileExplorer(
@@ -1132,9 +1129,9 @@ class _PosterState extends State<Poster> {
   ) async {
     setState(() => isLoadingPath = true);
     try {
-      path = await FilePicker.getFilePath(
-          type: FileType.any, allowedExtensions: extensions);
-      paths = null;
+      // path = await FilePicker.getFilePath(
+      //     type: FileType.any, allowedExtensions: extensions);
+      // paths = null;
     } on PlatformException catch (e) {
       print("Unsupported operation" + e.toString());
     }
@@ -1626,12 +1623,12 @@ class _PosterState extends State<Poster> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },
@@ -1771,12 +1768,12 @@ class _PosterState extends State<Poster> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },
@@ -1822,12 +1819,12 @@ class _PosterState extends State<Poster> {
               ],
             ),
             actions: <Widget>[
-              FlatButton(
-                child: new Text("OK"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
+              // FlatButton(
+              //   child: new Text("OK"),
+              //   onPressed: () {
+              //     Navigator.of(context).pop();
+              //   },
+              // ),
             ],
           );
         },
@@ -1952,12 +1949,12 @@ class _PosterState extends State<Poster> {
                     ],
                   ),
                   actions: <Widget>[
-                    FlatButton(
-                      child: new Text("OK"),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
+                    // FlatButton(
+                    //   child: new Text("OK"),
+                    //   onPressed: () {
+                    //     Navigator.of(context).pop();
+                    //   },
+                    // ),
                   ],
                 );
               },
@@ -1976,10 +1973,10 @@ class PathPainter extends CustomPainter {
   Color strokeColor;
 
   PathPainter({
-    this.currentSelectedIndex,
-    this.initialYPosition,
-    this.optionLength,
-    this.strokeColor,
+    required this.currentSelectedIndex,
+    required this.initialYPosition,
+    required this.optionLength,
+    required this.strokeColor,
   });
 
   @override

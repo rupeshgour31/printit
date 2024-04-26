@@ -6,7 +6,7 @@ import 'package:printit_app/Api/request_manager.dart';
 class WSOrderPrinteryListRequest extends APIRequest {
   String order_id;
 
-  WSOrderPrinteryListRequest({endPoint, this.order_id})
+  WSOrderPrinteryListRequest({endPoint, this.order_id=''})
       : super(endPoint + "order_printery_list") {}
 
   @override

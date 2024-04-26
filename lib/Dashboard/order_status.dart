@@ -37,7 +37,7 @@ class _OrderStatusState extends State<OrderStatus> {
       setState(
         () {
           // user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          get_print_type = json.decode(prefs.getString('set_print_type')??'');
         },
       );
     }
@@ -45,7 +45,7 @@ class _OrderStatusState extends State<OrderStatus> {
 
   getPriceDetails() async {
     print('@ GHG ${get_print_type}');
-    progressHUD.state.show();
+    // progressHUD.state.show();
     var otpRequest = WSGetOrderDetailsRequest(
       endPoint: APIManagerForm.endpoint,
       orderID: orderId.toString(),
@@ -58,19 +58,19 @@ class _OrderStatusState extends State<OrderStatus> {
         setState(() {
           getOrderPriceDetails = dataResponse['data'];
         });
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
       }
     } catch (e) {
       print('Error: ${e.toString()}');
     }
-    progressHUD.state.dismiss();
+    // progressHUD.state.dismiss();
   }
 
   @override
   Widget build(BuildContext context) {
-    final Map product = ModalRoute.of(context).settings.arguments;
+    final  product = ModalRoute.of(context)!.settings.arguments;
     setState(() {
-      orderId = product['orderID'].toString();
+      orderId = '';//product['orderID'].toString();
     });
     return WillPopScope(
       onWillPop: () async => false,
@@ -172,7 +172,7 @@ class _OrderStatusState extends State<OrderStatus> {
                       ),
                     ),
                   ),
-                  progressHUD,
+                  // progressHUD,
                 ],
               ),
             ),

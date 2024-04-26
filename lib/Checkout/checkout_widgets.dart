@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:geocoder/geocoder.dart';
+// import 'package:geocoder/geocoder.dart';
 import 'package:http/http.dart';
 import 'package:printit_app/Api/Request/WSTranslationOrderRequest.dart';
 import 'package:printit_app/Api/api_manager.dart';
@@ -577,11 +577,11 @@ Widget deliveryAddress(
                                                             color: Colors
                                                                 .grey[200],
                                                           ),
-                                                          onChanged: (String
+                                                          onChanged: (String?
                                                               newValue) {
                                                             setState(() {
                                                               dropdownValue =
-                                                                  newValue;
+                                                                  newValue!;
                                                               model.addType =
                                                                   newValue;
                                                             });
@@ -896,30 +896,30 @@ Widget areaTextField(
           onPressed: () async {
             // show input autocomplete with selected mode
             // then get the Prediction selected
-            Prediction p = await PlacesAutocomplete.show(
-              context: context,
-              apiKey: kGoogleApiKey,
-              onError: onError,
-              mode: _mode,
-              language: "en",
-              components: [Component(Component.country, "kw")],
-            );
-            if (p != null) {
-              print("PlaceID ${p.placeId}");
-              PlacesDetailsResponse detail =
-                  await _places.getDetailsByPlaceId(p.placeId);
-              print("detail ${detail.errorMessage}");
-              var placeId = p.placeId;
-              double lat = detail.result.geometry.location.lat;
-              double lng = detail.result.geometry.location.lng;
-              model.latitude = lat.toString();
-              model.longitude = lng.toString();
-
-              model.setAreaName(detail.result.formattedAddress);
-              setState(() {});
-              print("lat $lat");
-              print("lng $lng");
-            }
+            // Prediction p = await PlacesAutocomplete.show(
+            //   context: context,
+            //   apiKey: kGoogleApiKey,
+            //   onError: onError,
+            //   mode: _mode,
+            //   language: "en",
+            //   components: [Component(Component.country, "kw")],
+            // );
+            // if (p != null) {
+            //   print("PlaceID ${p.placeId}");
+            //   PlacesDetailsResponse detail =
+            //       await _places.getDetailsByPlaceId(p.placeId);
+            //   print("detail ${detail.errorMessage}");
+            //   var placeId = p.placeId;
+            //   double lat = detail.result.geometry.location.lat;
+            //   double lng = detail.result.geometry.location.lng;
+            //   model.latitude = lat.toString();
+            //   model.longitude = lng.toString();
+            //
+            //   model.setAreaName(detail.result.formattedAddress);
+            //   setState(() {});
+            //   print("lat $lat");
+            //   print("lng $lng");
+            // }
           },
         ),
       );
@@ -943,15 +943,15 @@ void getGooglePlaceData() async {
 Future<Null> displayPrediction(Prediction p, model) async {
   if (p != null) {
     print("PlaceID ${p.placeId}");
-    PlacesDetailsResponse detail = await _places.getDetailsByPlaceId(p.placeId);
-    print("detail ${detail.errorMessage}");
-    var placeId = p.placeId;
-    double lat = detail.result.geometry.location.lat;
-    double lng = detail.result.geometry.location.lng;
-    model.setAreaName(detail.result.formattedAddress);
-
-    print("lat $lat");
-    print("lng $lng");
+    // PlacesDetailsResponse detail = await _places.getDetailsByPlaceId(p.placeId);
+    // print("detail ${detail.errorMessage}");
+    // var placeId = p.placeId;
+    // double lat = detail.result.geometry!.location.lat;
+    // double lng = detail.result.geometry!.location.lng;
+    // model.setAreaName(detail.result.formattedAddress);
+    //
+    // print("lat $lat");
+    // print("lng $lng");
   }
 }
 
@@ -1164,19 +1164,19 @@ Widget saveAddBtn(
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },
         );
       }
       else {
-        if (formKey.currentState.validate()) {
+        if (formKey.currentState!.validate()) {
           model.saveAddressOptions(
             context,
             user_id,

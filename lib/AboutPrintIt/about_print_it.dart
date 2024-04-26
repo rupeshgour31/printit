@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
+// import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:printit_app/AboutPrintIt/about_widgets.dart';
 import 'package:printit_app/Common/common_appbar.dart';
 import 'package:printit_app/Common/common_widgets.dart';
@@ -15,7 +15,7 @@ class AboutPrintIt extends StatefulWidget {
 }
 
 class _AboutPrintItState extends State<AboutPrintIt> {
-  Future<void> _launched;
+  // Future<void> _launched;
   var languageType;
   void initState() {
     getValuesSF();
@@ -25,8 +25,8 @@ class _AboutPrintItState extends State<AboutPrintIt> {
   @override
   getValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    var getLang = json.decode(prefs.getString('language_select'));
-    languageType = getLang ?? 'english';
+    // var getLang = json.decode(prefs.getString('language_select'));
+    // languageType = getLang ?? 'english';
   }
 
   Future<void> _makePhoneCall(String url) async {
@@ -119,7 +119,7 @@ class _AboutPrintItState extends State<AboutPrintIt> {
     );
   }
 
-  Widget contactUsPopup(context) {
+   contactUsPopup(context) {
     showModalBottomSheet(
       backgroundColor: Colors.transparent,
       context: context,
@@ -150,9 +150,9 @@ class _AboutPrintItState extends State<AboutPrintIt> {
                       ),
                       onTap: () {
                         print('rupesh gour');
-                        _launched = _makePhoneCall(
-                          'tel: +91 76970054659',
-                        );
+                        // _launched = _makePhoneCall(
+                        //   'tel: +91 76970054659',
+                        // );
                       },
                     ),
                     dividerCommon(
@@ -163,8 +163,8 @@ class _AboutPrintItState extends State<AboutPrintIt> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        FlutterOpenWhatsapp.sendSingleMessage(
-                            "7697005469", "Hello");
+                        // FlutterOpenWhatsapp.sendSingleMessage(
+                        //     "7697005469", "Hello");
                       },
                       child: Text(
                         'WhatsApp',
@@ -183,9 +183,9 @@ class _AboutPrintItState extends State<AboutPrintIt> {
                     GestureDetector(
                       onTap: () {
                         print('rupesh gour');
-                        _launched = _makePhoneCall(
-                          _emailLaunchUri.toString(),
-                        );
+                        // _launched = _makePhoneCall(
+                        //   _emailLaunchUri.toString(),
+                        // );
                       },
                       child: Text(
                         'Email',

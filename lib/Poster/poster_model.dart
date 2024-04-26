@@ -15,33 +15,33 @@ class PosterModel extends ChangeNotifier {
   var paperType;
   int _itemCount = 1;
   var itemsCount = 1;
-  File image;
-  String imageSavePath;
+  File? image;
+  String imageSavePath = '';
   final picker = ImagePicker();
 
   Future takeCameraPic() async {
-    final pickedFile = await picker.getImage(source: ImageSource.camera);
-    image = File(pickedFile.path);
-    imageSavePath = pickedFile.path;
-    notifyListeners();
+    // final pickedFile = await picker.getImage(source: ImageSource.camera);
+    // image = File(pickedFile.path);
+    // imageSavePath = pickedFile.path;
+    // notifyListeners();
   }
 
   resetItemCount() {
     _itemCount = 1;
     itemsCount = 1;
   }
-  String fileName;
-  String path;
-  Map<String, String> paths;
-  List<String> extensions;
+  String fileName = '';
+  String path='';
+  Map<String, String> paths ={};
+  List<String> extensions=[];
   bool isLoadingPath = false;
 
   Future openFileExplorer(context) async {
      try {
-      path = await FilePicker.getFilePath(
-          type:  FileType.any,
-          allowedExtensions: extensions);
-      paths = null;
+      // path = await FilePicker.getFilePath(
+      //     type:  FileType.any,
+      //     allowedExtensions: extensions);
+      // paths = null;
     } on PlatformException catch (e) {
       print("Unsupported operation" + e.toString());
     }
@@ -132,6 +132,7 @@ class PosterModel extends ChangeNotifier {
 
   }
 
+/*
   Future takeGallaryPic(context) async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
     if (pickedFile != null) {
@@ -212,6 +213,7 @@ class PosterModel extends ChangeNotifier {
       }
     }
   }
+*/
 
   designUpload(context, designDetail) {
     if (image == null) {

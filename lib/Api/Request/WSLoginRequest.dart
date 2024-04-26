@@ -10,9 +10,9 @@ class WSLoginRequest extends APIRequest {
 
   WSLoginRequest({
     endPoint,
-    this.email,
-    this.password,
-    this.deviceToken,
+    this.email='',
+    this.password='',
+    this.deviceToken='',
   }) : super(endPoint + "login") {}
 
   @override

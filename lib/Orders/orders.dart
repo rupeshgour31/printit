@@ -35,13 +35,13 @@ class _OrdersState extends State<Orders> {
   getValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var status = prefs.getBool('isLoggedIn') ?? false;
-    var getLang = json.decode(prefs.getString('language_select'));
+    var getLang = json.decode(prefs.getString('language_select')??'');
     languageType = getLang ?? 'english';
     if (status) {
       setState(
         () {
-          user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          user_id = json.decode(prefs.getString('login_user_id')??'');
+          get_print_type = json.decode(prefs.getString('set_print_type')??'');
         },
       );
     } else {
@@ -61,7 +61,7 @@ class _OrdersState extends State<Orders> {
     await APIManager.performRequest(orderReq, showLog: true);
 
     try {
-      var dataResponse = orderReq.response;
+      Map dataResponse = orderReq.response;
       setState(() {
         savedOrdersList = dataResponse["saved_orders"];
         historyOrders = dataResponse["completed_orders"];
@@ -220,7 +220,7 @@ class _OrdersState extends State<Orders> {
                       padding: EdgeInsets.only(right: 50.0),
                       height: 50,
                       child: Text(
-                        messages,
+                        'messages',
                         // textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         style: new TextStyle(
@@ -234,12 +234,12 @@ class _OrdersState extends State<Orders> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },

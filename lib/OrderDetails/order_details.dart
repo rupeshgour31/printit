@@ -48,14 +48,14 @@ class _OrderDetailsState extends State<OrderDetails> {
   getValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var status = prefs.getBool('isLoggedIn') ?? false;
-    var getLang = json.decode(prefs.getString('language_select'));
+    var getLang = json.decode(prefs.getString('language_select')??'');
     languageType = getLang ?? 'english';
     if (status) {
 
       setState(
         () {
-          user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          user_id = json.decode(prefs.getString('login_user_id')??'');
+          get_print_type = json.decode(prefs.getString('set_print_type')??'');
         },
       );
       print('@ GHG ${get_print_type}');
@@ -83,7 +83,7 @@ class _OrderDetailsState extends State<OrderDetails> {
     await APIManager.performRequest(orderReq, showLog: true);
 
     try {
-      var dataResponse = orderReq.response;
+      Map dataResponse = orderReq.response;
       if (dataResponse['success'] == true) {
         setState(() {
           product = dataResponse["data"];
@@ -115,12 +115,12 @@ class _OrderDetailsState extends State<OrderDetails> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },
@@ -134,7 +134,7 @@ class _OrderDetailsState extends State<OrderDetails> {
   bool _saving = false;
   bool _loading = false;
   applyCoupen(getCode, deliveryType) async {
-    if (formKey.currentState.validate()) {
+    if (formKey.currentState!.validate()) {
       setState(() {
         _isLoading = true;
       });
@@ -177,7 +177,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                     ),
                     widthSizedBox(5.0),
                     Text(
-                      messages,
+                      'messages',
                       textAlign: TextAlign.center,
                       maxLines: 2,
                       // overflow: TextOverflow.ellipsis,
@@ -185,12 +185,12 @@ class _OrderDetailsState extends State<OrderDetails> {
                   ],
                 ),
                 actions: <Widget>[
-                  FlatButton(
-                    child: new Text("OK"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  // FlatButton(
+                  //   child: new Text("OK"),
+                  //   onPressed: () {
+                  //     Navigator.of(context).pop();
+                  //   },
+                  // ),
                 ],
               );
             },
@@ -242,7 +242,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                   ),
                   widthSizedBox(5.0),
                   Text(
-                    messages,
+                    'messages',
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     // overflow: TextOverflow.ellipsis,
@@ -250,12 +250,12 @@ class _OrderDetailsState extends State<OrderDetails> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },
@@ -385,7 +385,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                       ),
                     ),
                   ),
-                  progressHUD,
+                  // progressHUD,
                 ],
               ),
               isLoading: _isLoading,
@@ -561,7 +561,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                   ),
                   widthSizedBox(5.0),
                   Text(
-                    messages,
+                    'messages',
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     // overflow: TextOverflow.ellipsis,
@@ -569,12 +569,12 @@ class _OrderDetailsState extends State<OrderDetails> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },

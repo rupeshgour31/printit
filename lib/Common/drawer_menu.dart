@@ -31,14 +31,14 @@ class _DrawerMenuState extends State<DrawerMenu> {
   getValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     loginStatus = prefs.getBool('isLoggedIn') ?? false;
-    var getLang = json.decode(prefs.getString('language_select'));
+    var getLang = json.decode(prefs.getString('language_select')??'');
     languageType = getLang ?? 'english';
     if (loginStatus == true) {
       setState(
         () {
           loginStatus = loginStatus;
           // user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          get_print_type = json.decode(prefs.getString('set_print_type')??'');
           // languageType = getLang == null ? 'english' : getLang;
         },
       );
@@ -49,7 +49,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
 
   void logoutUser() async {
     SharedPreferences prefsd = await SharedPreferences.getInstance();
-    user_id = json.decode(prefsd.getString('login_user_id'));
+    user_id = json.decode(prefsd.getString('login_user_id')??'');
 
     var deviceToken = "deviceToken";
     if(Platform.isAndroid) {
@@ -58,7 +58,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
       deviceToken = androidInfo.id;
     }
 
-    progressHUD.state.show();
+    // progressHUD.state.show();
     var otpRequest = WSLogoutRequest(
       endPoint: APIManagerForm.endpoint,
       user_id: user_id,
@@ -71,7 +71,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
         prefsd.remove('login_user_id');
         prefsd?.setBool("isLoggedIn", false);
         prefsd?.setString("language_select", json.encode('english'));
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
@@ -81,7 +81,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
         );
       } else {
         var messages = dataResponse['msg'];
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -95,7 +95,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
                   ),
                   widthSizedBox(5.0),
                   Text(
-                    messages,
+                    'messages',
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     // overflow: TextOverflow.ellipsis,
@@ -103,12 +103,12 @@ class _DrawerMenuState extends State<DrawerMenu> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },
@@ -362,7 +362,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
             ],
           ),
         ),
-        progressHUD,
+        // progressHUD,
       ],
     );
   }

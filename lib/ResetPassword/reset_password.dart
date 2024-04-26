@@ -32,15 +32,15 @@ class _ResetPasswordState extends State<ResetPassword> {
     if (status) {
       setState(
         () {
-          user_id = json.decode(prefs.getString('login_user_id'));
-          get_print_type = json.decode(prefs.getString('set_print_type'));
+          user_id = json.decode(prefs.getString('login_user_id')??'');
+          get_print_type = json.decode(prefs.getString('set_print_type')??'');
         },
       );
     }
   }
 
   submitResetPassword() async {
-    progressHUD.state.show();
+    // progressHUD.state.show();
     var otpRequest = WSChangePasswordRequest(
       endPoint: APIManagerForm.endpoint,
       userId: user_id.toString(),
@@ -56,9 +56,9 @@ class _ResetPasswordState extends State<ResetPassword> {
         Navigator.pop(context);
         changePassNewOne.clear();
         changePassOldOne.clear();
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
       } else {
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         var messages = dataResponse['msg'];
         showDialog(
           context: context,
@@ -79,7 +79,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                       padding: EdgeInsets.only(right: 50.0),
                       height: 50,
                       child: Text(
-                        messages,
+                        'messages',
                         overflow: TextOverflow.ellipsis,
                         style: new TextStyle(
                           fontSize: 12.0,
@@ -92,12 +92,12 @@ class _ResetPasswordState extends State<ResetPassword> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
-                  child: new Text("OK"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                // FlatButton(
+                //   child: new Text("OK"),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
               ],
             );
           },
@@ -157,7 +157,7 @@ class _ResetPasswordState extends State<ResetPassword> {
               ),
             ),
           ),
-          progressHUD,
+          // progressHUD,
         ],
       ),
     );

@@ -1,10 +1,11 @@
 String validateEmailField(String value) {
-  Pattern pattern =
+  String pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   RegExp regex = new RegExp(pattern);
   if (value.isEmpty)
     return 'Email is Required.';
   else if (!regex.hasMatch(value)) return 'Invalid Email';
+  else return '';
 }
 
 String validatePassword(String value) {
@@ -18,7 +19,7 @@ String validatePassword(String value) {
   // else if (!regex.hasMatch(value))
   //   return 'Password must contain numbers, letter, and at least six characters';
   else
-    return null;
+    return '';
 }
 
 String validateNewPassword(String value) {
@@ -32,7 +33,7 @@ String validateNewPassword(String value) {
   // else if (!regex.hasMatch(value))
   //   return 'Password must contain numbers, letter, and at least six characters';
   else
-    return null;
+    return '';
 }
 
 String validateName(String value) {
@@ -41,84 +42,84 @@ String validateName(String value) {
   else if (value.length < 3)
     return 'Name required at least 6 numbers';
   else
-    return null;
+    return '';
 }
 
 String validateTitle(String value) {
   if (value.isEmpty)
     return 'Project Name is Required.';
   else
-    return null;
+    return '';
 }
 
 String validatePromoCode(String value) {
   if (value.isEmpty)
     return 'Please enter promo code.';
   else
-    return null;
+    return '';
 }
 
 String validateHome(String value) {
   if (value.isEmpty)
     return 'Home Name is Required.';
   else
-    return null;
+    return '';
 }
 
 String validateBlock(String value) {
   if (value.isEmpty)
     return 'Block is Required.';
   else
-    return null;
+    return '';
 }
 
 String validateStreet(String value) {
   if (value.isEmpty)
     return 'Street is Required.';
   else
-    return null;
+    return '';
 }
 
 String validateAvenue(String value) {
   if (value.isEmpty)
     return 'Avenue is Required.';
   else
-    return null;
+    return '';
 }
 
 String validateBuilding(String value) {
   if (value.isEmpty)
     return 'Building is Required.';
   else
-    return null;
+    return '';
 }
 
 String validateAppartmentNo(String value) {
   if (value.isEmpty)
     return 'Appartment no. is Required.';
   else
-    return null;
+    return '';
 }
 
 String validateOffice(String value) {
   if (value.isEmpty)
     return 'Office is Required.';
   else
-    return null;
+    return '';
 }
 
 String validateFloor(String value) {
   if (value.isEmpty)
     return 'Floor is Required.';
   else
-    return null;
+    return '';
 }
 
 String validateAreaName(String value) {
   if (value.isEmpty)
     return 'Area is Required.';
   else
-    return null;
+    return '';
 }
 
 String validateAddressName(String value) {
@@ -127,7 +128,7 @@ String validateAddressName(String value) {
   else if (value.length < 3)
     return 'Address Name required at least 6 numbers';
   else
-    return null;
+    return '';
 }
 
 String validateMobile(String value) {
@@ -136,5 +137,5 @@ String validateMobile(String value) {
   else if (value.length < 8)
     return 'Mobile Number required 8 digits';
   else
-    return null;
+    return '';
 }

@@ -15,14 +15,14 @@ class WSSignUpRequest extends APIRequest {
 
   WSSignUpRequest({
     endPoint,
-    this.f_name,
-    this.l_name,
-    this.email,
-    this.password,
-    this.mobile,
-    this.address,
-    this.latitude,
-    this.longitude,
+    this.f_name='',
+    this.l_name='',
+    this.email='',
+    this.password='',
+    this.mobile='',
+    this.address='',
+    this.latitude='',
+    this.longitude='',
   }) : super(endPoint + "user_resgister") {}
 
   @override

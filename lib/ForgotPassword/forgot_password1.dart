@@ -18,7 +18,7 @@ class ForgotPassword1 extends StatefulWidget {
 class _ForgotPassword1State extends State<ForgotPassword1> {
   final formKey = GlobalKey<FormState>();
   resetPassword(email) async {
-    progressHUD.state.show();
+    // progressHUD.state.show();
     var otpRequest = WSResetPasswordRequest(
       endPoint: APIManagerForm.endpoint,
       email: email.text,
@@ -27,7 +27,7 @@ class _ForgotPassword1State extends State<ForgotPassword1> {
     try {
       var dataResponse = otpRequest.response;
       if (dataResponse['success'] == true) {
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         email.clear();
         Constants.showToast('Please check mail for reset your password.');
         Timer(
@@ -39,7 +39,7 @@ class _ForgotPassword1State extends State<ForgotPassword1> {
         // Navigator.pushNamed(context, '/forgotPassword2');
       } else {
         var messages = dataResponse['msg'];
-        progressHUD.state.dismiss();
+        // progressHUD.state.dismiss();
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -57,7 +57,7 @@ class _ForgotPassword1State extends State<ForgotPassword1> {
                       padding: EdgeInsets.only(right: 50.0),
                       height: 50,
                       child: Text(
-                        messages,
+                        'messages',
                         // textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
                         style: new TextStyle(
@@ -71,12 +71,12 @@ class _ForgotPassword1State extends State<ForgotPassword1> {
                 ],
               ),
               actions: <Widget>[
-                FlatButton(
+               /* FlatButton(
                   child: new Text("OK"),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                ),
+                ),*/
               ],
             );
           },
@@ -135,7 +135,7 @@ class _ForgotPassword1State extends State<ForgotPassword1> {
                     ),
                   ),
                 ),
-                progressHUD,
+                // progressHUD,
               ],
             ),
             bottomNavigationBar:
